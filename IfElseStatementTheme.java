@@ -9,8 +9,8 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Человек ещё учиться");
         }
-        String gender = "Женский";
-        if(gender != "Мужской") {
+        boolean gender = true;
+        if(gender = true) {
             System.out.println("Ты женщина");
         }
         double height = 3.1;
@@ -19,7 +19,7 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Ты очень высокий");
         }
-        char firstLetter = "Vladislav" .charAt(0);
+        char firstLetter = "Vladislav".charAt(0);
         if(firstLetter == 'M') {
             System.out.println("Тебя зовут Марат");
         } else if(firstLetter == 'I') {
@@ -42,62 +42,67 @@ public class IfElseStatementTheme {
 
         //Работа с числом
         System.out.println("\n3. Работа с числом");
-        int oneNumber = (int) (Math.random() * 400 - 200);
-        if(oneNumber % 2 == 0) {
-            System.out.println("Число " + oneNumber + " чётное ");
-        } else {
-            System.out.println("Число " + oneNumber + " нечётное ");
-        }
-        if(oneNumber > 0) {
-            System.out.println("Число " + oneNumber + " положительное ");
-        } else if(oneNumber < 0) {
-            System.out.println("Число " + oneNumber + " отрицательное ");
-        } else {
+        int srcNumber = (int) (Math.random() * 400 - 200);
+        if (srcNumber == 0) {
             System.out.println("Число равно 0");
+        } else if(srcNumber % 2 == 0) {
+            System.out.println("Число " + srcNumber + " чётное ");
+        } else {
+            System.out.println("Число " + srcNumber + " нечётное ");
+        }
+        if(srcNumber > 0) {
+            System.out.println("Число " + srcNumber + " положительное ");
+        } else if(srcNumber < 0) {
+            System.out.println("Число " + srcNumber + " отрицательное ");
         }
 
         //Поиск одинаковых цифр в числах
         System.out.println("\n4. Поиск одинаковых цифр в числах");
-        int number1Lesson4 = (int) (Math.random() * 100 + 100);
-        int number11 = number1Lesson4 / 100;
-        int number12 = number1Lesson4 / 10 % 10;
-        int number13 = number1Lesson4 % 10;
-        int number2Lesson4 = (int) (Math.random() * 50 + 100);
-        int number21 = number2Lesson4 / 100;
-        int number22 = number2Lesson4 / 10 % 10;
-        int number23 = number2Lesson4 % 10;
-        System.out.println("В числах " + number1Lesson4 + " и " + number2Lesson4 + " одинаковые: ");
-        if(number11 == number21) {
-            System.out.println(number11);
+        int srcNumber1 = (int) (Math.random() * 100 + 100);
+        int digit11 = srcNumber1 / 100;
+        int digit12 = srcNumber1 / 10 % 10;
+        int digit13 = srcNumber1 % 10;
+        int srcNumber2 = (int) (Math.random() * 50 + 100);
+        int digit21 = srcNumber2 / 100;
+        int digit22 = srcNumber2 / 10 % 10;
+        int digit23 = srcNumber2 % 10;
+        System.out.println("В числах " + srcNumber1 + " и " + srcNumber2 + " одинаковые: ");
+        if(digit11 == digit21) {
+            System.out.println(digit11);
         }
-        if(number12 == number22) {
-            System.out.println(number12);
+        if(digit12 == digit22) {
+            System.out.println(digit12);
         }
-        if(number13 == number23) {
-            System.out.println(number13);
+        if(digit13 == digit23) {
+            System.out.println(digit13);
         }
 
         //Определение буквы, числа или символа по их коду
         System.out.println("\n5. Определение буквы, числа или символа по их коду");
-        char symbol = '\u005A';
-        System.out.println("Это большая буква " + symbol);
+        char symbol = '\u0057';
+        if ((symbol < '\u0030') | (symbol > '\u0039') && (symbol < '\u0041') | (symbol > '\u005A') && (symbol < '\u0061') | (symbol > '\u007A')){
+                    System.out.println("Это символ " + symbol);
+        } else if ((symbol > '\u002F') && (symbol < '\u003A')) {
+            System.out.println("Это число " + symbol);
+        } else if ((symbol > '\u0040') && (symbol < '\u005B')){
+            System.out.println("Это большая буква " + symbol);
+        } else if ((symbol > '\u0060') && (symbol < '\u007B')){
+            System.out.println("Это маленькая буква " + symbol);
+        }
 
         //Определение суммы вклада и начисленных банком %
         System.out.println("\n6. Определение суммы вклада и начисленных банком %");
         int sumDeposit = 300000;
+        int procent = 0;
         if(sumDeposit < 100000) {
-            int procent = (int) (sumDeposit * 0.05);
-            int sumWithProcent = sumDeposit + procent;
-            System.out.println("Сумма вклада = " + sumDeposit + "\nНачисленный процент = " + procent + "\nИтоговая сумма = " + sumWithProcent);
+            procent = (int) (sumDeposit * 0.05);
         } else if(sumDeposit <= 300000) {
-            int procent = (int) (sumDeposit * 0.07);
-            int sumWithProcent = sumDeposit + procent;
-            System.out.println("Сумма вклада = " + sumDeposit + "\nНачисленный процент = " + procent + "\nИтоговая сумма = " + sumWithProcent);
+            procent = (int) (sumDeposit * 0.07);
         } else {
-            int procent = (int) (sumDeposit * 0.1);
-            int sumWithProcent = sumDeposit + procent;
-            System.out.println("Сумма вклада = " + sumDeposit + "\nНачисленный процент = " + procent + "\nИтоговая сумма = " + sumWithProcent);
+            procent = (int) (sumDeposit * 0.1);
         }
+        int sumWithProcent = sumDeposit + procent;
+        System.out.println("Сумма вклада = " + sumDeposit + "\nНачисленный процент = " + procent + "\nИтоговая сумма = " + sumWithProcent);
 
         //Определение оценки по предметам
         System.out.println("\n7. Определение оценки по предметам");
@@ -125,41 +130,47 @@ public class IfElseStatementTheme {
         }
         System.out.println(historyScore + " - оценка по истории");
         System.out.println(programmingScore + " - оценка по программированию");
-        double srednyScore = (historyScore + programmingScore) / 2;
-        System.out.println(srednyScore + " - средний балл");
-        double srednyProcent = (history + programming) / 2;
-        System.out.println(srednyProcent + " - средний процент");
+        double averageScore = (historyScore + programmingScore) / 2;
+        System.out.println(averageScore + " - средний балл");
+        double averageProcent = (history + programming) / 2;
+        System.out.println(averageProcent + " - средний процент");
 
         //Расчет прибыли
         System.out.println("\n8. Расчет прибыли");
         int rent = 5000;
         int sale = 15000;
         int product = 9000;
-        int totalForTheMonth = sale - (rent + product);
-        int totalForTheYear = totalForTheMonth * 12;
-        System.out.println("Прибыль за месяц: " + totalForTheMonth);
-        System.out.println("Прибыль за год: " + totalForTheYear);
+        int totalForYear = (sale - (rent + product)) * 12;
+        System.out.println("Прибыль за год: " + totalForYear);
 
         //Определение существования треугольника
         System.out.println("\n9. Определение существования треугольника");
         int a = 3;
         int b = 4;
         int c = 5;
-        if((a + b > c) & (b + c > a) & (a + c > b)) {
+        int leg1 = 0;
+        int leg2 = 0;
+        if((a + b > c) && (b + c > a) && (a + c > b)) {
             System.out.println("Треугольник существует");
-            if ((a<c) & (b<c)) {
+            if ((a < c) & (b < c)) {
                 System.out.println("a и b катеты ");
-                int square = (a * b) / 2;
-                System.out.println("Площадь = " + square);
-            } else if ((a<b) & (c<b)) {
+                leg1 = a;
+                leg2 = b;
+            } else if ((a < b) & (c < b)) {
                 System.out.println("a и c катеты ");
+                leg1 = a;
+                leg2 = c;
             } else {
                 System.out.println("b и c катеты ");
+                leg1 = c;
+                leg2 = b;
             }
-        System.out.println("    /| ");
-        System.out.println("   / | ");
-        System.out.println("  /  | ");
-        System.out.println(" /___| ");
+            int square = (leg1 * leg2) / 2;
+            System.out.println("Площадь = " + square);
+            System.out.println("    /| ");
+            System.out.println("   / | ");
+            System.out.println("  /  | ");
+            System.out.println(" /___| ");
         } else {
             System.out.println("Треугольник не существует");
         }
