@@ -10,7 +10,7 @@ public class IfElseStatementTheme {
             System.out.println("Человек ещё учиться");
         }
         boolean gender = true;
-        if(gender = true) {
+        if(gender != false) {
             System.out.println("Ты женщина");
         }
         double height = 3.1;
@@ -43,17 +43,19 @@ public class IfElseStatementTheme {
         //Работа с числом
         System.out.println("\n3. Работа с числом");
         int srcNumber = (int) (Math.random() * 400 - 200);
-        if (srcNumber == 0) {
-            System.out.println("Число равно 0");
-        } else if(srcNumber % 2 == 0) {
-            System.out.println("Число " + srcNumber + " чётное ");
+        if (srcNumber != 0) {
+            if(srcNumber % 2 == 0) {
+                System.out.println("Число " + srcNumber + " чётное ");
+            } else {
+                System.out.println("Число " + srcNumber + " нечётное ");
+            }
+            if(srcNumber > 0) {
+                System.out.println("Число " + srcNumber + " положительное ");
+            } else if(srcNumber < 0) {
+                System.out.println("Число " + srcNumber + " отрицательное ");
+            }
         } else {
-            System.out.println("Число " + srcNumber + " нечётное ");
-        }
-        if(srcNumber > 0) {
-            System.out.println("Число " + srcNumber + " положительное ");
-        } else if(srcNumber < 0) {
-            System.out.println("Число " + srcNumber + " отрицательное ");
+            System.out.println("Число равно 0");
         }
 
         //Поиск одинаковых цифр в числах
@@ -80,14 +82,14 @@ public class IfElseStatementTheme {
         //Определение буквы, числа или символа по их коду
         System.out.println("\n5. Определение буквы, числа или символа по их коду");
         char symbol = '\u0057';
-        if ((symbol < '\u0030') | (symbol > '\u0039') && (symbol < '\u0041') | (symbol > '\u005A') && (symbol < '\u0061') | (symbol > '\u007A')){
-                    System.out.println("Это символ " + symbol);
-        } else if ((symbol > '\u002F') && (symbol < '\u003A')) {
+        if ((symbol > '0') && (symbol < '9')) {
             System.out.println("Это число " + symbol);
-        } else if ((symbol > '\u0040') && (symbol < '\u005B')){
+        } else if ((symbol > 'A') && (symbol < 'Z')) {
             System.out.println("Это большая буква " + symbol);
-        } else if ((symbol > '\u0060') && (symbol < '\u007B')){
+        } else if ((symbol > 'a') && (symbol < 'z')) {
             System.out.println("Это маленькая буква " + symbol);
+        } else {
+            System.out.println("Это символ " + symbol);
         }
 
         //Определение суммы вклада и начисленных банком %
@@ -141,7 +143,11 @@ public class IfElseStatementTheme {
         int sale = 15000;
         int product = 9000;
         int totalForYear = (sale - (rent + product)) * 12;
-        System.out.println("Прибыль за год: " + totalForYear);
+        if (totalForYear > 0) {
+            System.out.println("Прибыль за год: +" + totalForYear);
+        } else {
+            System.out.println("Потери за год: -" + totalForYear);
+        }
 
         //Определение существования треугольника
         System.out.println("\n9. Определение существования треугольника");
@@ -152,11 +158,11 @@ public class IfElseStatementTheme {
         int leg2 = 0;
         if((a + b > c) && (b + c > a) && (a + c > b)) {
             System.out.println("Треугольник существует");
-            if ((a < c) & (b < c)) {
+            if ((a < c) && (b < c)) {
                 System.out.println("a и b катеты ");
                 leg1 = a;
                 leg2 = b;
-            } else if ((a < b) & (c < b)) {
+            } else if ((a < b) && (c < b)) {
                 System.out.println("a и c катеты ");
                 leg1 = a;
                 leg2 = c;
