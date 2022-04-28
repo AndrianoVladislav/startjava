@@ -9,10 +9,11 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Человек ещё учиться");
         }
-        boolean gender = true;
-        if(gender != false) {
+        boolean gender = false;
+        if(!gender) {
             System.out.println("Ты женщина");
         }
+
         double height = 3.1;
         if(height < 1.80) {
             System.out.println("Ты низкий");
