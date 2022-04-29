@@ -235,11 +235,5 @@ public class CyclesTheme  {
            System.out.print("\n");
            one++;
         }
-
-
-
-
-
-
     }
 }
