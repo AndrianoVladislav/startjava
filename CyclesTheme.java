@@ -1,53 +1,61 @@
-public class CyclesTheme  { 
+public class CyclesTheme { 
     public static void main(String[] args) {
         //Подсчет суммы четных и нечетных чисел
         System.out.println("\n1. Подсчет суммы четных и нечетных чисел");
         int i = -10;
-        int a = 1;
-        int result = 0;
+        int a = -9;
+        int result11 = 0;
+        int result12 = 0;
         do {
-            result = result + i;
-            System.out.println(a + " = " + result);
-            i++;
-            a++;
-        } while (i != 21);
-        System.out.println("Сумма чисел = " + result);
+            result11 = result11 + i;
+            result12 = result12 + a;
+            i = i + 2;
+            a = a + 2;
+        } while (i < 22);
+            System.out.println("Сумма четных чисел = " + result11);
+            System.out.println("Сумма нечетных чисел = " + result12);
 
         //Вывод чисел между max и min
         System.out.println("\n2. Вывод чисел между max и min");
-        int[] firstArray = {10, 5, -1};
-        int max = -999999;
-        for (int t = 0; t <= 2; t++) {
-            if (firstArray[t] > max){
-                max = firstArray[t];
-            }
+        int srcNumber21 = 10;
+        int srcNumber22 = 5;
+        int srcNumber23 = -1;
+        int max = 0;
+        if ((srcNumber21 > srcNumber22) && (srcNumber21 > srcNumber23)) {
+            max = srcNumber21;
+        } else if ((srcNumber22 > srcNumber21) && (srcNumber22 > srcNumber23)){
+            max = srcNumber22;
+        } else {
+            max = srcNumber23;
         }
-        int min = 9999999;
-        for (int x = 0; x <= 2; x++) {
-            if (firstArray[x] < min){
-                min = firstArray[x];
-            }
+        int min = 0;
+        if ((srcNumber21 < srcNumber22) && (srcNumber21 < srcNumber23)){
+            min = srcNumber21;
+        } else if ((srcNumber22 < srcNumber21) && (srcNumber22 < srcNumber23)){
+            min = srcNumber22;
+        } else {
+            min = srcNumber23;
         }
-        for (int r = min; r <= max; r++) {
+        for (int r = max -1; r > min; r--) {
             System.out.println(r);
         }
 
         //Вывод реверсивного числа и суммы его цифр
         System.out.println("\n3. Вывод реверсивного числа и суммы его цифр");
-        int h = 0;
         int number = 1234;
-        int[] secondArray = new int[4];
-        while (h != 4){
-            secondArray[h] = number % 10;
+        int srcNumber31 = 0;
+        int srcNumber32 = 0;
+        int srcNumber33 = 0;
+        int counter3 = 1000;
+        while (number != 0){
+            srcNumber31 = number % 10;
+            srcNumber32 = srcNumber32 + (srcNumber31 * counter3);
+            srcNumber33 = srcNumber33 + srcNumber31;
+            counter3 = counter3 / 10;
             number = number / 10;
-            System.out.print(secondArray[h]);
-            h++;
         }
-        int sum = 0;
-        for (int u = 0; u != 4; u++){
-            sum = sum + secondArray[u];
-        }
-        System.out.println(" - число \nСумма цифр = " + sum);
+        System.out.println("Исходное число в обратном порядке = " + srcNumber32);
+        System.out.println("Сумма цифр = " + srcNumber33);
 
         //Вывод чисел на консоль в несколько строк
         System.out.println("\n4. Вывод чисел на консоль в несколько строк");
@@ -140,23 +148,18 @@ public class CyclesTheme  {
 
         //Проверка, является ли число палиндромом
         System.out.println("\n8. Проверка, является ли число палиндромом");
-        int[] thirdArray = new int[7];
         int srcNumber8 = 1234321;
         int reserve = srcNumber8;
-        int r = 0;
-        while (r != 7){
-            thirdArray[r] = srcNumber8 % 10;
-            srcNumber8 = srcNumber8 / 10;
-            r++;
-        }
+        int srcNumber81 = 0;
+        int srcNumber82 = 0;
         int counter8 = 1000000;
-        int result8 = 0;
-        while (r != 0){
-            r--;
-            result8 = result8 + (thirdArray[r] * counter8);
+        while (srcNumber8 != 0){
+            srcNumber81 = srcNumber8 % 10;
+            srcNumber82 = srcNumber82 + (srcNumber81 * counter8);
+            srcNumber8 = srcNumber8 / 10;
             counter8 = counter8 / 10;
         }
-        if (reserve == result8){
+        if (reserve == srcNumber82){
             System.out.println("Число 1234321 является палиндромом");
         } else {
             System.out.println("Число 1234321 неявляется палиндромом");
@@ -164,28 +167,34 @@ public class CyclesTheme  {
 
         //Определение, является ли число счастливым
         System.out.println("\n9. Определение, является ли число счастливым");
-        int[] fourthArray = new int[6];
         int srcNumber9 = 123456;
         int p = 0;
-        while (p != 6){
-            fourthArray[p] = srcNumber9 % 10;
-            srcNumber9 = srcNumber9 / 10;
-            p++;
-        }
-        p = 0;
-        int result91 = 0;
+        int srcNumber91 = 0;
+        int srcNumber92 = 0;
+        int srcNumber93 = 0;
+        int srcNumber94 = 0;
+        int srcNumber95 = 0;
+        int counter91 = 100;
+        int counter92 = 100;
         while (p != 3){
-            result91 = result91 + fourthArray[p];
+            srcNumber91 = srcNumber9 % 10;
+            srcNumber92 = srcNumber92 + (srcNumber91 * counter91);
+            srcNumber93 = srcNumber93 +srcNumber91;
+            counter91 = counter91 / 10;
+            srcNumber9 = srcNumber9 /10;
             p++;
         }
-        int result92 = 0;
         while (p != 6){
-            result92 = result92 + fourthArray[p];
+            srcNumber91 = srcNumber9 % 10;
+            srcNumber94 = srcNumber94 + (srcNumber91 * counter92);
+            srcNumber95 = srcNumber95 +srcNumber91;
+            counter92 = counter92 / 10;
+            srcNumber9 = srcNumber9 /10;
             p++;
         }
-        System.out.println(fourthArray[0] + "" + fourthArray[1] + "" + fourthArray[2] + " = " + result91);
-        System.out.println(fourthArray[3] + "" + fourthArray[4] + "" + fourthArray[5] + " = " + result92);
-        if (result91 == result92){
+        System.out.println(srcNumber92 + " = " + srcNumber93);
+        System.out.println(srcNumber94 + " = " + srcNumber95);
+        if (srcNumber93 == srcNumber95){
             System.out.println("Число счастливое");
         } else {
             System.out.println("Число несчастливое");
