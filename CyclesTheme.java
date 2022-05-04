@@ -1,5 +1,5 @@
 public class CyclesTheme { 
-    public static void main(String[] aris) {
+    public static void main(String[] args) {
         //Подсчет суммы четных и нечетных чисел
         System.out.println("\n1. Подсчет суммы четных и нечетных чисел");
         int x = -10;
