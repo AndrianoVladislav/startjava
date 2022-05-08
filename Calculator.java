@@ -3,8 +3,7 @@ public class Calculator {
         double num1 = 6.5;
         double num2 = 4.5;
         double result = 0;
-        char symbol = '^';
-        int sign = symbol;
+        char sign = '^';;
         if (sign == '+') {
             result = num1 + num2;
         } else if (sign == '-') {
@@ -21,6 +20,6 @@ public class Calculator {
                 result *= num1;
             }
         }
-        System.out.format(num1 + " " + symbol + " " + num2 + " = " + "%1$-10.2f", result);
+        System.out.format(num1 + " " + sign + " " + num2 + " = " + "%1$-10.2f", result);
     }
 }
