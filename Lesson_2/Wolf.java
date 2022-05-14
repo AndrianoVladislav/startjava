@@ -18,7 +18,7 @@ public class Wolf {
         return name;
     }
 
-    void setName(String name){
+    public void setName(String name){
         this.name = name;
     }
 
@@ -26,7 +26,7 @@ public class Wolf {
         return height;
     }
 
-    void setHeight(float height){
+    public void setHeight(float height){
         this.height = height;
     }
 
@@ -34,7 +34,7 @@ public class Wolf {
         return age;
     }
 
-    void setAge(int age){
+    public void setAge(int age){
         if(age > 8) {
             System.out.println("Некорректный возраст");
         } else {
@@ -46,7 +46,7 @@ public class Wolf {
         return color;
     }
 
-    void setColor(String color){
+    public void setColor(String color){
         this.color = color;
     }
 
