@@ -3,35 +3,33 @@ import java.util.Scanner;
 public class CalculatorTest { 
     public static void main(String[] args) {
         Calculator calculatorOne = new Calculator();
-        Scanner entry = new Scanner(System.in);
-        String question = "yes";
-        while (question.equals("yes")) {
+        Scanner console = new Scanner(System.in);
+        String answer = "yes";
+        while (answer.equals("yes")) {
             System.out.println("Введите первое число: ");
-            int a = entry.nextInt();
-            System.out.println("Введите знак математической операции: ");
-            char sign = entry.next().charAt(0);
-            System.out.println("Введите второе число: ");
-            int b = entry.nextInt();
+            int a = console.nextInt();
             calculatorOne.setNum1(a);
-            calculatorOne.setSymbol(sign);
+            System.out.println("Введите знак математической операции: ");
+            char sign = console.next().charAt(0);
+            calculatorOne.setMathSign(sign);
+            System.out.println("Введите второе число: ");
+            int b = console.nextInt();
             calculatorOne.setNum2(b);
-            calculatorOne.count();
-            System.out.format(calculatorOne.getNum1() + " " + calculatorOne.getSymbol() + " " + calculatorOne.getNum2() + " = " + "%1$-10.2f%n", calculatorOne.getResult());
+            calculatorOne.calculate();
+            System.out.format(a + " " + sign + " " + b + " = " + "%1$-10.2f%n", calculatorOne.getResult());
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
-            question = entry.nextLine();
-            question = entry.nextLine();
+            answer = console.nextLine();
+            answer = console.nextLine();
             while (true) {
-                if (question.equals("yes")) {
+                if (answer.equals("yes")) {
                     break;
-                } else if (question.equals("no")) {
+                } else if (answer.equals("no")) {
                     break;
                 } else {
                     System.out.println("Недопустимое слово");
                 }
-                question = entry.nextLine();
+                answer = console.nextLine();
             }
         }
     }
 }
-
-// || (question2.equals("yes"))

@@ -3,37 +3,37 @@ public class Calculator {
     private double num1;
     private double num2;
     private double result;
-    private char symbol;
+    private char mathSign;
 
-    public double getNum1(){
+    public double getNum1() {
         return num1;
     }
 
-    public void setNum1(float num1){
+    public void setNum1(float num1) {
         this.num1 = num1;
     }
 
-    public double getNum2(){
+    public double getNum2() {
         return num2;
     }
 
-    public void setNum2(float num2){
+    public void setNum2(float num2) {
         this.num2 = num2;
     }
 
-    public char getSymbol(){
+    public char getMathSign() {
         return symbol;
     }
 
-    public void setSymbol(char symbol){
+    public void setMathSign(char symbol) {
         this.symbol = symbol;
     }
 
-    public double getResult(){
+    public double getResult() {
         return result;
     }
 
-    public void count() {
+    public void calculate() {
         switch(symbol) {
             case '+' :
                 result = num1 + num2;
@@ -60,5 +60,4 @@ public class Calculator {
                 System.out.println("Символ введён неверно");
         }
     }
-//        System.out.format(num1 + " " + symbol + " " + num2 + " = " + "%1$-10.2f", result);
 }

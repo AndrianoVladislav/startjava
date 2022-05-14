@@ -6,35 +6,35 @@ public class Wolf {
     private int age;
     private String color;
 
-    public String getGender(){
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(String gender){
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public float getHeight(){
+    public float getHeight() {
         return height;
     }
 
-    public void setHeight(float height){
+    public void setHeight(float height) {
         this.height = height;
     }
 
-    public int getAge(){
+    public int getAge() {
         return age;
     }
 
-    public void setAge(int age){
+    public void setAge(int age) {
         if(age > 8) {
             System.out.println("Некорректный возраст");
         } else {
@@ -42,11 +42,11 @@ public class Wolf {
         }
     }
 
-    public String getColor(){
+    public String getColor() {
         return color;
     }
 
-    public void setColor(String color){
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -62,7 +62,7 @@ public class Wolf {
         System.out.println("Бежит");
     }
 
-    public void howls() {
+    public void howl() {
         System.out.println("Воет");
     }
 

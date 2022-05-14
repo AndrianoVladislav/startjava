@@ -14,7 +14,7 @@ public class WolfTest {
         wolfOne.go();
         wolfOne.sit();
         wolfOne.run();
-        wolfOne.howls();
+        wolfOne.howl();
         wolfOne.hunt();
     }
 }
