@@ -18,12 +18,10 @@ public class CalculatorTest {
             calculatorOne.calculate();
             System.out.format(a + " " + sign + " " + b + " = " + "%1$-10.2f%n", calculatorOne.getResult());
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
+            console.nextLine();
             answer = console.nextLine();
-            answer = console.nextLine();
-            while (true) {
-                if (answer.equals("yes")) {
-                    break;
-                } else if (answer.equals("no")) {
+            while (!answer.equals("yes")) {
+                if (answer.equals("no")) {
                     break;
                 } else {
                     System.out.println("Недопустимое слово");

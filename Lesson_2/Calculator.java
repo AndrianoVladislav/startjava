@@ -22,11 +22,11 @@ public class Calculator {
     }
 
     public char getMathSign() {
-        return symbol;
+        return mathSign;
     }
 
-    public void setMathSign(char symbol) {
-        this.symbol = symbol;
+    public void setMathSign(char mathSign) {
+        this.mathSign = mathSign;
     }
 
     public double getResult() {
@@ -34,7 +34,7 @@ public class Calculator {
     }
 
     public void calculate() {
-        switch(symbol) {
+        switch(mathSign) {
             case '+' :
                 result = num1 + num2;
                 break;
