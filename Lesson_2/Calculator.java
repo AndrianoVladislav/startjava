@@ -51,13 +51,13 @@ public class Calculator {
                 result = num1 % num2;
                 break;
             case '^' :
-                result += 1;
+                result = 1;
                 for (int i = 1; i <= num2; i++) {
                     result *= num1;
                 }
                 break;
             default:
-                System.out.println("Символ введён неверно");
+                System.out.println("Мат. операция не найдена");
         }
     }
 }
