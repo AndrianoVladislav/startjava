@@ -21,9 +21,7 @@ public class CalculatorTest {
             console.nextLine();
             while (!answer.equals("no")) {
                 answer = console.nextLine();
-                if (answer.equals("yes")) {
-                    break;
-                } else if (answer.equals("no")) {
+                if ((answer.equals("yes")) && (answer.equals("yes"))) {
                     break;
                 } else {
                     System.out.println("Недопустимое значение");
