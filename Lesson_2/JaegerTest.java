@@ -16,17 +16,9 @@ public class JaegerTest{
         jaegerOne.run(false);
         jaegerOne.kill(true);
         System.out.println("");
-        Jaeger jaegerTwo = new Jaeger();
-        jaegerTwo.setName("Gipsy Avenger");
-        jaegerTwo.setModel("Mark-6");
-        jaegerTwo.setEquipment("Dual Vortex turbine");
-        jaegerTwo.setLaunched(2034);
-        jaegerTwo.setKaijuKilled(1);
-        System.out.println("Название " + jaegerTwo.getName());
-        System.out.println("Модель " + jaegerTwo.getModel());
-        System.out.println("Оружие " + jaegerTwo.getEquipment());
-        System.out.println("Год выпуска " + jaegerTwo.getLaunched());
-        System.out.println("Количество убитых монстров " + jaegerTwo.getKaijuKilled());
+
+        Jaeger jaegerTwo = new Jaeger("Gipsy Avenger", "Mark-6", "Dual Vortex turbine", 2034, 1);
+        System.out.println(jaegerTwo);
         jaegerTwo.launch(true);
         jaegerTwo.go(true);
         jaegerTwo.run(true);

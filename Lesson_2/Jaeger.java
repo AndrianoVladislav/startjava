@@ -6,6 +6,21 @@ public class Jaeger {
     private int launched;
     private int kaijuKilled;
 
+    public Jaeger(){}
+
+    public Jaeger(final String name, String model, String equipment, int launched, int kaijuKilled) {
+        this.name = name;
+        this.model = model;
+        this.equipment = equipment;
+        this.launched = launched;
+        this.kaijuKilled = kaijuKilled;
+    }
+
+    public String toString() {
+        return String.format("Название %s \nМодель %s \nОружие %s \nГод выпуска %s \nКоличество убитых монстров %s",
+                name, model, equipment, launched, kaijuKilled);
+    }
+
     public String getName() {
         return name;
     }
