@@ -1,4 +1,8 @@
+import java.util.Scanner;
+
 public class GuessNumber { 
+
+    Scanner consoleTwo = new Scanner(System.in, "Cp866");
 
     private int secretNumber;
     private int playerNumber;
@@ -20,20 +24,20 @@ public class GuessNumber {
         this.secretNumber = secretNumber;
     }
 
-    public void game() {
+    public void supposeNumber() {
+        secretNumber = (int) ( Math.random() * 101);
+    }
+
+    public void enterNumber () {
+        playerNumber = consoleTwo.nextInt();
+    }
+
+    public void play() {
         difference = secretNumber - playerNumber;
         if (playerNumber < secretNumber) {
-            if (difference > 5) {
-                System.out.println("Число " + playerNumber + " сильно меньше того, что загадал компьютер");
-            } else {
-                System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер");
-            }
+            System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер");
         } else if (playerNumber > secretNumber) {
-            if (difference < -5) {
-                System.out.println("Число " + playerNumber + " сильно больше того, что загадал компьютер");
-            } else {
-                System.out.println("Число " + playerNumber + " больше того, что загадал компьютер");
-            }
+            System.out.println("Число " + playerNumber + " больше того, что загадал компьютер");
         }
     }
 }
