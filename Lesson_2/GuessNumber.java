@@ -6,7 +6,6 @@ public class GuessNumber {
 
     private int secretNumber;
     private int playerNumber;
-    private int difference = 0;
 
     public int getPlayerNumber() {
         return playerNumber;
@@ -33,7 +32,6 @@ public class GuessNumber {
     }
 
     public void play() {
-        difference = secretNumber - playerNumber;
         if (playerNumber < secretNumber) {
             System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер");
         } else if (playerNumber > secretNumber) {
