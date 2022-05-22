@@ -4,10 +4,6 @@ public class GuessNumberTest {
     public static void main(String[] args){
         GuessNumber guessNumber = new GuessNumber();
         Scanner console = new Scanner(System.in, "Cp866");
-        System.out.println("Первый игрок введите имя:");
-        Player firstPlayer = new Player(console.nextLine());
-        System.out.println("Второй игрок введите имя:");
-        Player secondPlayer = new Player(console.nextLine());
         String answer = "yes";
         while (answer.equals("yes")) {
             guessNumber.play();
