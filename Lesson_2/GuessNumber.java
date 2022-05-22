@@ -23,19 +23,28 @@ public class GuessNumber {
         this.secretNumber = secretNumber;
     }
 
-    public void supposeNumber() {
-        secretNumber = (int) ( Math.random() * 101);
-    }
-
-    public void enterNumber () {
-        playerNumber = consoleTwo.nextInt();
-    }
-
     public void play() {
-        if (playerNumber < secretNumber) {
-            System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер");
-        } else if (playerNumber > secretNumber) {
-            System.out.println("Число " + playerNumber + " больше того, что загадал компьютер");
+        secretNumber = (int) ( Math.random() * 101);
+        while (secretNumber != playerNumber) {
+            System.out.println("Первый игрок введите число:");
+            playerNumber = consoleTwo.nextInt();
+            if (playerNumber < secretNumber) {
+                System.out.println("Первый игрок, число " + playerNumber + " меньше того, что загадал компьютер");
+            } else if (playerNumber > secretNumber) {
+                System.out.println("Первый игрок, число " + playerNumber + " больше того, что загадал компьютер");
+            } else {
+                break;
+            }
+            System.out.println("Второй игрок введите число:");
+            playerNumber = consoleTwo.nextInt();
+            if (playerNumber < secretNumber) {
+                System.out.println("Второй игрок, число " + playerNumber + " меньше того, что загадал компьютер");
+            } else if (playerNumber > secretNumber) {
+                System.out.println("Второй игрок, число " + playerNumber + " больше того, что загадал компьютер");
+            } else {
+                break;
+            }
         }
+    System.out.println("Вы угадали, число которое загадал компьютер = " + playerNumber);
     }
 }
