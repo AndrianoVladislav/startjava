@@ -1,3 +1,5 @@
+package com.startjava.Lesson_1.finish;
+
 public class Calculator { 
     public static void main(String[] args) {
         double num1 = 6.5;

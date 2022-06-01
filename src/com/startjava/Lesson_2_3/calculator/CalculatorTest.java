@@ -1,3 +1,5 @@
+package com.startjava.Lesson_2_3.calculator;
+
 import java.util.Scanner;
 
 public class CalculatorTest { 
@@ -17,16 +19,10 @@ public class CalculatorTest {
             calculator.setNum2(b);
             calculator.calculate();
             System.out.format(a + " " + sign + " " + b + " = " + "%1$-10.2f%n", calculator.getResult());
-            System.out.println("Хотите продолжить вычисления? [yes/no]:");
-            console.nextLine();
-            while (!answer.equals("no")) {
-                answer = console.nextLine();
-                if ((answer.equals("yes")) && (answer.equals("yes"))) {
-                    break;
-                } else {
-                    System.out.println("Недопустимое значение");
-                }
-            }
+            do {
+                System.out.println("Хотите продолжить вычисления? [yes/no]:");
+                answer = console.next();
+            } while (!"no".equals(answer) && !"yes".equals(answer));
         }
     }
 }

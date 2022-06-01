@@ -1,3 +1,5 @@
+package com.startjava.Lesson_1.finish;
+
 public class GuessNumber { 
     public static void main(String[] args) {
         int secretNumber = 33;

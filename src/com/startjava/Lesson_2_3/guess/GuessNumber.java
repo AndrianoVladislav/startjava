@@ -1,3 +1,5 @@
+package com.startjava.Lesson_2_3.guess;
+
 import java.util.Scanner;
 
 public class GuessNumber { 
@@ -5,13 +7,15 @@ public class GuessNumber {
     Scanner consoleTwo = new Scanner(System.in, "Cp866");
 
     private int secretNumber;
+    private Player firstPlayer;
+    private Player secondPlayer;
+
+    public GuessNumber (Player firstPlayer, Player secondPlayer) {
+        this.firstPlayer = firstPlayer;
+        this.secondPlayer = secondPlayer;
+    }
 
     public void play() {
-        System.out.println("Первый игрок введите имя:");
-        consoleTwo.nextLine();
-        Player firstPlayer = new Player(consoleTwo.nextLine());
-        System.out.println("Второй игрок введите имя:");
-        Player secondPlayer = new Player(consoleTwo.nextLine());
         secretNumber = (int) ( Math.random() * 101);
         while (true) {
             System.out.println(firstPlayer.getName() + " введите число:");
@@ -23,7 +27,7 @@ public class GuessNumber {
                 System.out.println(firstPlayer.getName() + " число " + firstPlayer.getNumber() + 
                     " больше того, что загадал компьютер");
             } else if (firstPlayer.getNumber() == secretNumber) {
-                System.out.println(firstPlayer.getNumber() + " угадал, число которое загадал компьютер = " 
+                System.out.println(firstPlayer.getName() + " угадал, число которое загадал компьютер = " 
                     + secretNumber);
                 break;
             }
@@ -36,7 +40,7 @@ public class GuessNumber {
                 System.out.println(secondPlayer.getName() + " число " + secondPlayer.getNumber() + 
                     " больше того, что загадал компьютер");
             } else if (secondPlayer.getNumber() == secretNumber) {
-                System.out.println(secondPlayer.getNumber() + " угадал, число которое загадал компьютер = " 
+                System.out.println(secondPlayer.getName() + " угадал, число которое загадал компьютер = " 
                     + secretNumber);
                 break;
             }
