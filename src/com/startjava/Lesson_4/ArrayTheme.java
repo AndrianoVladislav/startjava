@@ -2,28 +2,44 @@ package com.startjava.Lesson_4;
 
 public class ArrayTheme {
     public static void main(String[] args) {
-
         //1.Реверс значений массива
         System.out.println("1.Реверс значений массива");
         int[] numbers = {1, 2, 3, 4, 5, 6, 7};
-        int[] numbersCopy = new int[numbers.length];
-        System.arraycopy(numbers, 0, numbersCopy, 0, numbers.length);
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = numbersCopy[(numbers.length - 1) - i];
-            System.out.println(numbersCopy[i] + " " + numbers[i]);
+        for (int number : numbers) {
+            System.out.print(number);
+        }
+        System.out.println();
+        int temp;
+        for (int i = 0; i < 4; i++) {
+            temp = numbers[i];
+            numbers[i] = numbers[6 - i];
+            numbers[6 - i] = temp;
+        }
+        for (int number : numbers) {
+            System.out.print(number);
         }
 
         //2.Вывод произведения элементов массива
         System.out.println("\n2.Вывод произведения элементов массива");
-        int[] numbersComposition = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] arrayNumbers = new int[10];
+        for(int i = 0; i < arrayNumbers.length; i++) {
+            arrayNumbers[i] = i;
+            if (arrayNumbers[i] == 9) {
+                System.out.print(arrayNumbers[i] + " = ");
+            } else if (arrayNumbers[i] == 0) {
+                System.out.print("");
+            } else {
+                System.out.print(arrayNumbers[i] + " * ");
+            }
+        }
         int composition = 1;
-        for (int i = 1; i < numbersComposition.length; i++) {
-            composition *= numbersComposition[i];
+        for (int i = 2; i < arrayNumbers.length; i++) {
+            composition *= arrayNumbers[i];
         }
-        System.out.println("1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 = " + composition);
-        for(int number: numbersComposition) {
-            System.out.print(" [" + numbersComposition[number] + "]-" + numbersComposition[number]);
-        }
+        System.out.print(composition + "\n");
+        System.out.print(" [" + arrayNumbers[0] + "]-" + arrayNumbers[0]);
+        System.out.print(" [" + arrayNumbers[arrayNumbers.length - 1] + "]-" + arrayNumbers[arrayNumbers.length - 1]);
+
 
         //3.Удаление элементов массива
         System.out.println("\n3.Удаление элементов массива");
@@ -64,27 +80,24 @@ public class ArrayTheme {
         int[] numberRandom = new int[30];
         for (int i = 0; i < numberRandom.length; i++) {
             numberRandom[i] = (int) (Math.random() * 41 + 60);
-            for (int j = 0; j < i; j++) {
-                while (numberRandom[i] == numberRandom[j]) {
-                    numberRandom[i] = (int) (Math.random() * 41 + 60);
-                }
-            }
-            for (int j = 0; j < i; j++) {
-                while (numberRandom[i] == numberRandom[j]) {
-                    numberRandom[i] = (int) (Math.random() * 41 + 60);
+        }
+        temp = 1;
+        while (temp != 0) {
+            for (int i = 0; i < 30; i++) {
+                temp = 0;
+                for (int j = 0; j < i; j++) {
+                    if (numberRandom[j] < numberRandom[j + 1]) {
+                        temp = numberRandom[j];
+                        numberRandom[j] = numberRandom[j + 1];
+                        numberRandom[j + 1] = temp;
+                    } else if (numberRandom[j] == numberRandom[j + 1]) {
+                        numberRandom[j + 1] = (int) (Math.random() * 41 + 60);
+                        temp++;
+                    }
                 }
             }
         }
-        int temp;
         for (int i = numberRandom.length - 1; i > -1; i--) {
-            for (int j = 0; j < i; j++) {
-                if (numberRandom[j] < numberRandom[j + 1]) {
-                    temp = numberRandom[j];
-                    numberRandom[j] = numberRandom[j + 1];
-                    numberRandom[j + 1] = temp;
-                }
-
-            }
             System.out.format("%1$-3d", numberRandom[i]);
             if ((i == 10) ||  (i == 20)) {
                 System.out.println();
