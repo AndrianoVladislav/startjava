@@ -1,48 +1,50 @@
 package com.startjava.Lesson_4;
 
 public class ArrayTheme {
-    public static void main(String[] args) {
-        //1.Реверс значений массива
-        System.out.println("1.Реверс значений массива");
-        int[] numbers = {1, 2, 3, 4, 5, 6, 7};
+    private static int[] numbers;
+
+    public static void outputArray() {
         for (int number : numbers) {
             System.out.print(number);
         }
         System.out.println();
+    }
+    public static void main(String[] args) {
+        //1.Реверс значений массива
+        System.out.println("1.Реверс значений массива");
+        numbers = new int[] {1, 2, 3, 4, 5, 6, 7};
+        outputArray();
         int temp;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < numbers.length / 2; i++) {
             temp = numbers[i];
-            numbers[i] = numbers[6 - i];
-            numbers[6 - i] = temp;
+            numbers[i] = numbers[(numbers.length - 1) - i];
+            numbers[(numbers.length - 1) - i] = temp;
         }
-        for (int number : numbers) {
-            System.out.print(number);
-        }
+        outputArray();
 
         //2.Вывод произведения элементов массива
         System.out.println("\n2.Вывод произведения элементов массива");
-        int[] arrayNumbers = new int[10];
-        for(int i = 0; i < arrayNumbers.length; i++) {
-            arrayNumbers[i] = i;
-            if (arrayNumbers[i] == 9) {
-                System.out.print(arrayNumbers[i] + " = ");
-            } else if (arrayNumbers[i] == 0) {
-                System.out.print("");
-            } else {
-                System.out.print(arrayNumbers[i] + " * ");
+        numbers = new int[10];
+        int product = 1;
+        for(int i = 0; i < numbers.length; i++) {
+            numbers[i] = i;
+            if ((numbers[i] != numbers.length - 1) && (numbers[i] != 0)){
+                if (numbers[i] == (numbers.length - 2)) {
+                    System.out.print(numbers[i] + " = ");
+                    product *= numbers[i];
+                } else {
+                    product *= numbers[i];
+                    System.out.print(numbers[i] + " * ");
+                }
             }
         }
-        int composition = 1;
-        for (int i = 2; i < arrayNumbers.length; i++) {
-            composition *= arrayNumbers[i];
-        }
-        System.out.print(composition + "\n");
-        System.out.print(" [" + arrayNumbers[0] + "]-" + arrayNumbers[0]);
-        System.out.print(" [" + arrayNumbers[arrayNumbers.length - 1] + "]-" + arrayNumbers[arrayNumbers.length - 1]);
+        System.out.print(product + "\n");
+        System.out.print("[" + numbers[0] + "]-" + numbers[0]);
+        System.out.print(" [" + numbers[numbers.length - 1] + "]-" + numbers[numbers.length - 1]);
 
 
         //3.Удаление элементов массива
-        System.out.println("\n3.Удаление элементов массива");
+        System.out.println("\n\n3.Удаление элементов массива");
         float[] arrayOne = new float[15];
         System.out.println("Исходный массив");
         for(int i = 0; i < arrayOne.length; i++) {
@@ -52,7 +54,7 @@ public class ArrayTheme {
         System.out.println("\nИзменённый массив");
         int counter = 0;
         for(int i = 0; i < arrayOne.length; i++) {
-            if (arrayOne[i] > arrayOne[7]) {
+            if (arrayOne[i] > arrayOne[arrayOne.length / 2]) {
                 arrayOne[i] = 0;
                 counter++;
             }
@@ -68,8 +70,8 @@ public class ArrayTheme {
             arrayAlphabet[i] = (char) counter;
             counter++;
         }
-        for(int i = 24; i > -2; i--) {
-            for (int j = 25; j > i; j--) {
+        for(int i = arrayAlphabet.length - 2; i > -2; i--) {
+            for (int j = arrayAlphabet.length - 1; j > i; j--) {
                 System.out.print(arrayAlphabet[j]);
             }
             System.out.println();
@@ -77,28 +79,28 @@ public class ArrayTheme {
 
         //5.Генерация уникальных чисел
         System.out.println("\n5.Генерация уникальных чисел");
-        int[] numberRandom = new int[30];
-        for (int i = 0; i < numberRandom.length; i++) {
-            numberRandom[i] = (int) (Math.random() * 41 + 60);
+        numbers = new int[30];
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = (int) (Math.random() * 41 + 60);
         }
         temp = 1;
         while (temp != 0) {
-            for (int i = 0; i < 30; i++) {
+            for (int i = 0; i < numbers.length; i++) {
                 temp = 0;
                 for (int j = 0; j < i; j++) {
-                    if (numberRandom[j] < numberRandom[j + 1]) {
-                        temp = numberRandom[j];
-                        numberRandom[j] = numberRandom[j + 1];
-                        numberRandom[j + 1] = temp;
-                    } else if (numberRandom[j] == numberRandom[j + 1]) {
-                        numberRandom[j + 1] = (int) (Math.random() * 41 + 60);
+                    if (numbers[j] < numbers[j + 1]) {
+                        temp = numbers[j];
+                        numbers[j] = numbers[j + 1];
+                        numbers[j + 1] = temp;
+                    } else if (numbers[j] == numbers[j + 1]) {
+                        numbers[j + 1] = (int) (Math.random() * 41 + 60);
                         temp++;
                     }
                 }
             }
         }
-        for (int i = numberRandom.length - 1; i > -1; i--) {
-            System.out.format("%1$-3d", numberRandom[i]);
+        for (int i = numbers.length - 1; i > -1; i--) {
+            System.out.format("%1$-3d", numbers[i]);
             if ((i == 10) ||  (i == 20)) {
                 System.out.println();
             }
