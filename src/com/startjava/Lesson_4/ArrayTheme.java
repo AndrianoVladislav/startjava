@@ -98,31 +98,34 @@ public class ArrayTheme {
         }
         //6.Сдвиг элементов массива
         System.out.println("\n6.Сдвиг элементов массива");
-        String[] stringArray = {"", "AA", "", "", "BBB", "C", "", "DDDD"};
-        len = stringArray.length;
-        temp = 0;
+        String[] strings = {"", "AA", "", "", "BBB", "C", "", "DDDD"};
+        len = strings.length;
+        counter = 0;
         for (int i = 0; i < len; i++) {
-            if (!stringArray[i].isBlank()) {
-                temp++;
+            if (!strings[i].isBlank()) {
+                counter++;
             }
         }
-        String[] stringArrayCopy = new String[temp];
-        idx = 0;
-        for (int i = 0; i < len; i++) {
-            if (!stringArray[i].isBlank()) {
-                System.arraycopy(stringArray, i, stringArrayCopy, idx, 1);
+        String[] newStrings = new String[counter];
+        idx = 1;
+        int indexNewStrings = 0;
+        for (int indexStrings = 0; indexStrings < len; indexStrings++) {
+            if (!strings[indexStrings].isBlank()) {
+                System.arraycopy(strings, indexStrings, newStrings, indexNewStrings, 1);
+                indexNewStrings++;
                 idx++;
             }
         }
         System.out.println("Исходный массив");
         for(int i = 0; i < len; i++) {
-            System.out.println((i + 1) + "-" + stringArray[i]);
+            System.out.println((i + 1) + "-" + strings[i]);
         }
         System.out.println("Копия массива");
-        for(int i = 0; i < stringArrayCopy.length; i++) {
-            System.out.println((i + 1) + "-" + stringArrayCopy[i]);
+        for(int i = 0; i < newStrings.length; i++) {
+            System.out.println((i + 1) + "-" + newStrings[i]);
         }
     }
+    
 
     private static void outputArray(int[] numbers) {
         for (int number : numbers) {
