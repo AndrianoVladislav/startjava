@@ -107,13 +107,17 @@ public class ArrayTheme {
             }
         }
         String[] newStrings = new String[counter];
-        idx = 1;
         int indexNewStrings = 0;
         for (int indexStrings = 0; indexStrings < len; indexStrings++) {
             if (!strings[indexStrings].isBlank()) {
-                System.arraycopy(strings, indexStrings, newStrings, indexNewStrings, 1);
-                indexNewStrings++;
-                idx++;
+                if ((indexStrings + 1 < len - 1) && (!strings[indexStrings + 1].isBlank())) {
+                    System.arraycopy(strings, indexStrings, newStrings, indexNewStrings, 2);
+                    indexNewStrings += 2;
+                    indexStrings++;
+                } else {
+                    System.arraycopy(strings, indexStrings, newStrings, indexNewStrings, 1);
+                    indexNewStrings++;
+                }
             }
         }
         System.out.println("Исходный массив");
@@ -125,7 +129,6 @@ public class ArrayTheme {
             System.out.println((i + 1) + "-" + newStrings[i]);
         }
     }
-    
 
     private static void outputArray(int[] numbers) {
         for (int number : numbers) {
