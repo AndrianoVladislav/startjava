@@ -6,33 +6,32 @@ public class Calculator {
     private double num2;
     private double result;
     private char mathSign;
+    private String[] expressions = new String[3];
+
+    public void setExpressions(String[] expressions) {
+        this.expressions = expressions;
+    }
 
     public double getNum1() {
         return num1;
-    }
-
-    public void setNum1(float num1) {
-        this.num1 = num1;
     }
 
     public double getNum2() {
         return num2;
     }
 
-    public void setNum2(float num2) {
-        this.num2 = num2;
-    }
-
     public char getMathSign() {
         return mathSign;
     }
 
-    public void setMathSign(char mathSign) {
-        this.mathSign = mathSign;
-    }
-
     public double getResult() {
         return result;
+    }
+
+    public void doArrays() {
+        num1 = Double.parseDouble(expressions[0]);
+        mathSign = expressions[1].charAt(0);
+        num2 = Double.parseDouble(expressions[2]);
     }
 
     public void calculate() {
@@ -53,10 +52,7 @@ public class Calculator {
                 result = num1 % num2;
                 break;
             case '^' :
-                result = 1;
-                for (int i = 1; i <= num2; i++) {
-                    result *= num1;
-                }
+                result = Math.pow(num1, num2);
                 break;
             default:
                 System.out.println("Мат. операция не найдена");

@@ -106,18 +106,19 @@ public class ArrayTheme {
                 counter++;
             }
         }
-        String[] newStrings = new String[counter];
-        int indexNewStrings = 0;
-        for (int i = 0; i < 8; i++) {
-            int counterLong = 0;
+        String[] str = new String[counter];
+        int destIdx = 0;
+        int srcIdx;
+        for (int i = 0; i < len; i++) {
+            int length = 0;
             if (!strings[i].isBlank()) {
-                idx = i;
+                srcIdx = i;
                 while (i != len && !strings[i].isBlank()) {
-                    counterLong++;
+                    length++;
                     i++;
                 }
-                System.arraycopy(strings, idx, newStrings, indexNewStrings, counterLong);
-                indexNewStrings += counterLong;
+                System.arraycopy(strings, srcIdx, str, destIdx, length);
+                destIdx += length;
             }
         }
         System.out.println("Исходный массив");
@@ -125,8 +126,8 @@ public class ArrayTheme {
             System.out.print("[ " + string + " ] ");
         }
         System.out.println("\nКопия массива");
-        for (String newString : newStrings) {
-            System.out.print("[ " + newString + " ] ");
+        for (String string : str) {
+            System.out.print("[ " + string + " ] ");
         }
     }
 
