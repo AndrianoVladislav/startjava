@@ -1,8 +1,6 @@
-package com.startjava.Lesson_2_3.calculator;
+package com.startjava.Lesson_2_3_4.calculator;
 
 import java.util.Scanner;
-
-import java.util.Arrays;
 
 public class CalculatorTest { 
     public static void main(String[] args) {
@@ -12,11 +10,8 @@ public class CalculatorTest {
         while (answer.equals("yes")) {
             System.out.println("Введите выражение: ");
             String expression = console.nextLine();
-            calculator.setExpressions(expression.split(" "));
-            calculator.doArrays();
-            calculator.calculate();
-            System.out.format(calculator.getNum1() + " " + calculator.getMathSign() + " " + calculator.getNum2() +
-                    " = " + "%1$-10.2f%n", calculator.getResult());
+            System.out.print(expression + " = ");
+            System.out.printf("%1$-10.2f%n",  calculator.calculate(expression));
             do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]:");
                 answer = console.nextLine();

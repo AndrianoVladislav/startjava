@@ -1,4 +1,4 @@
-package com.startjava.Lesson_4;
+package com.startjava.Lesson_2_3_4;
 
 public class ArrayTheme {
     public static void main(String[] args) {
