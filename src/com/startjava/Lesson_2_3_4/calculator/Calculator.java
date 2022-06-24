@@ -3,25 +3,37 @@ package com.startjava.Lesson_2_3_4.calculator;
 public class Calculator {
 
     public static double calculate(String expression) {
-
-        String[] expressions = expression.split(" ");
-        double result = 0;
+        String[] partsExpression = expression.split(" ");
+        char mathSign = partsExpression[1].charAt(0);
+        int num1 = 0;
+        int num2 = 0;
         try {
-            int num1 = Integer.parseInt(expressions[0]);
-            char mathSign = expressions[1].charAt(0);
-            int num2 = Integer.parseInt(expressions[2]);
-            switch (mathSign) {
-                case '+' -> result = num1 + num2;
-                case '-' -> result = num1 - num2;
-                case '*' -> result = num1 * num2;
-                case '/' -> result =(double) num1 / num2;
-                case '%' -> result = num1 % num2;
-                case '^' -> result = Math.pow(num1, num2);
-                default -> System.out.println("Мат. операция не найдена");
-            }
+            num1 = Integer.parseInt(partsExpression[0]);
+            num2 = Integer.parseInt(partsExpression[2]);
         } catch (NumberFormatException e) {
             System.out.println("Программа работает только с целыми числами");
         }
-        return result;
+        switch (mathSign) {
+            case '+' -> {
+                return num1 + num2;
+            }
+            case '-' -> {
+                return num1 - num2;
+            }
+            case '*' -> {
+                return num1 * num2;
+            }
+            case '/' -> {
+                return (double) num1 / num2;
+            }
+            case '%' -> {
+                return num1 % num2;
+            }
+            case '^' -> {
+                return Math.pow(num1, num2);
+            }
+            default -> System.out.println("Операция " + mathSign + " не поддерживается");
+        }
+        return 0;
     }
 }
