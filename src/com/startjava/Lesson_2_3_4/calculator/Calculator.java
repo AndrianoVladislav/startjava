@@ -13,27 +13,14 @@ public class Calculator {
         } catch (NumberFormatException e) {
             System.out.println("Программа работает только с целыми числами");
         }
-        switch (mathSign) {
-            case '+' -> {
-                return num1 + num2;
-            }
-            case '-' -> {
-                return num1 - num2;
-            }
-            case '*' -> {
-                return num1 * num2;
-            }
-            case '/' -> {
-                return (double) num1 / num2;
-            }
-            case '%' -> {
-                return num1 % num2;
-            }
-            case '^' -> {
-                return Math.pow(num1, num2);
-            }
-            default -> System.out.println("Операция " + mathSign + " не поддерживается");
-        }
-        return 0;
+        return switch (mathSign) {
+            case '+' -> num1 + num2;
+            case '-' -> num1 - num2;
+            case '*' -> num1 * num2;
+            case '/' ->  (double) num1 / num2;
+            case '%' ->  num1 % num2;
+            case '^' -> Math.pow(num1, num2);
+            default -> throw new IllegalArgumentException("Операция " + mathSign + " не поддерживается");
+        };
     }
 }
