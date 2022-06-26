@@ -10,7 +10,12 @@ public class CalculatorTest {
             System.out.println("Введите выражение: ");
             String expression = console.nextLine();
             System.out.print(expression + " = ");
-            System.out.printf("%1$-10.2f%n",  Calculator.calculate(expression));
+            try {
+                System.out.printf("%1$-10.2f%n",  Calculator.calculate(expression));
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+
             do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]:");
                 answer = console.nextLine();

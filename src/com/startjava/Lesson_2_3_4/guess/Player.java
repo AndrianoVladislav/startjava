@@ -5,7 +5,8 @@ import java.util.Arrays;
 public class Player {
 
     private String name;
-    private int[] storageNumbers = new int[10];
+    private int[] numbers  = new int[10];
+    private int len = numbers.length;
 
     public Player(String name) {
         this.name = name;
@@ -15,26 +16,23 @@ public class Player {
         return name;
     }
 
-    public void setStorageNumbers(int i, int number ) {
-        this.storageNumbers[i] = number;
+    public void addNumber(int i, int number) {
+        this.numbers [i] = number;
     }
 
-    public int getStorageNumbers(int i) {
-        return storageNumbers[i];
+    public int getNumber(int i) {
+        return numbers [i];
     }
 
-    public String displayAttempt(int a) {
-        int[] copyStorageNumbers = Arrays.copyOf(storageNumbers, a);
-        for(int i = 0; i < a; i++ ) {
-            if ((copyStorageNumbers[i] != 0)) {
-                System.out.print(copyStorageNumbers[i] + " ");
-            }
-        }
-        return "";
+    public int[] getNumber2() {
+        return numbers;
     }
 
-    public void fill() {
-        Arrays.fill(storageNumbers, 0);
+    public void fill(int a) {
+        Arrays.fill(numbers, 0, a, 0);
     }
 
+    public int getLen() {
+        return len;
+    }
 }
