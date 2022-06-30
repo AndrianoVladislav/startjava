@@ -16,12 +16,15 @@ public class Player {
     }
 
     public void addNumber(int i, int number) {
-        this.numbers [i] = number;
+        this.numbers[i] = number;
     }
 
     public int getNumber(int i) {
-        int[]  copyNumbers = Arrays.copyOf(numbers, 10);
-        return copyNumbers[i];
+        return numbers[i];
+    }
+
+    public int[] getNumbers() {
+        return Arrays.copyOf(numbers, 10);
     }
 
     public void clear(int i) {
