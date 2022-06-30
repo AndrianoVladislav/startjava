@@ -1,6 +1,5 @@
 package com.startjava.Lesson_2_3_4.guess;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessNumber { 
@@ -19,68 +18,46 @@ public class GuessNumber {
         System.out.println("Игра начинается! У каждого есть 10 попыток.");
         int secretNumber = (int) (Math.random() * 101);
         int count = 0;
-        for (int i = 0; i < firstPlayer.getLen(); i++) {
+        int attempts = 10;
+        for (int i = 0; i < attempts; i++) {
             count++;
-            try {
-                firstPlayer(secretNumber, i);
-                secondPlayer(secretNumber, i);
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+            if (go(secretNumber, i, firstPlayer) || go(secretNumber, i, secondPlayer)) {
                 break;
             }
-
         }
-        int[] copyNumbers  = Arrays.copyOf(firstPlayer.getNumber2() ,(count + 1));
-        for (int copyNumber : copyNumbers) {
-            if ((copyNumber != 0)) {
-                System.out.print(copyNumber + " ");
-            }
-        }
-        System.out.println();
-        copyNumbers = Arrays.copyOf(secondPlayer.getNumber2(), (count + 1));
-        for (int copyNumber : copyNumbers) {
-            if ((copyNumber != 0)) {
-                System.out.print(copyNumber + " ");
-            }
-        }
-        System.out.println();
-        firstPlayer.fill(count);
-        secondPlayer.fill(count);
+        System.out.println(output(firstPlayer));
+        System.out.println(output(secondPlayer));
+        firstPlayer.clear(count);
+        secondPlayer.clear(count);
     }
-    public void firstPlayer(int secretNumber, int i) {
-        System.out.println(firstPlayer.getName() + " введите число:");
-        firstPlayer.addNumber(i, console.nextInt());
-        if (firstPlayer.getNumber(i) == secretNumber) {
-            throw new IllegalArgumentException("Игрок " + firstPlayer.getName() + " угадал, число " + secretNumber + " c " +
+    public boolean go(int secretNumber, int i, Player playerNow) {
+        System.out.println(playerNow.getName() + " введите число:");
+        playerNow.addNumber(i, console.nextInt());
+        boolean end = false;
+        if (playerNow.getNumber(i) == secretNumber) {
+            System.out.println("Игрок " + playerNow.getName() + " угадал, число " + secretNumber + " c " +
                     (i + 1) + " попытки");
-        } else if (firstPlayer.getNumber(i) > secretNumber) {
-            System.out.println(firstPlayer.getName() + " число " + firstPlayer.getNumber(i) +
+            end = true;
+        } else if (playerNow.getNumber(i) > secretNumber) {
+            System.out.println(playerNow.getName() + " число " + playerNow.getNumber(i) +
                     " больше того, что загадал компьютер");
         } else {
-            System.out.println(firstPlayer.getName() + " число " + firstPlayer.getNumber(i) +
+            System.out.println(playerNow.getName() + " число " + playerNow.getNumber(i) +
                     " меньше того, что загадал компьютер");
         }
-        if ( i == 9) {
-            System.out.println("К сожалению у " + firstPlayer.getName() + " закончились попытки");
+        if (i == 9) {
+            System.out.println("К сожалению у " + playerNow.getName() + " закончились попытки");
         }
+        return end;
     }
 
-    public void secondPlayer(int secretNumber, int i) {
-        System.out.println(secondPlayer.getName() + " введите число:");
-        secondPlayer.addNumber(i, console.nextInt());
-        if (secondPlayer.getNumber(i) == secretNumber) {
-            throw new IllegalArgumentException("Игрок " + secondPlayer.getName() + " угадал, число " + secretNumber + " c " +
-                    (i + 1) + " попытки");
-        } else if (secondPlayer.getNumber(i) > secretNumber) {
-            System.out.println(secondPlayer.getName() + " число " + secondPlayer.getNumber(i) +
-                    " больше того, что загадал компьютер");
-        } else {
-            System.out.println(secondPlayer.getName() + " число " + secondPlayer.getNumber(i) +
-                    " меньше того, что загадал компьютер");
+    public String output(Player playerNow) {
+        for (int i = 0; i < 10; i++) {
+            if ((playerNow.getNumber(i) != 0)) {
+                System.out.print(playerNow.getNumber(i) + " ");
+            }
         }
-        if ( i == 9) {
-            System.out.println("К сожалению у " + secondPlayer.getName() + " закончились попытки");
-        }
+        return "";
     }
 
 }

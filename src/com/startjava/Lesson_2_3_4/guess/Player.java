@@ -6,7 +6,6 @@ public class Player {
 
     private String name;
     private int[] numbers  = new int[10];
-    private int len = numbers.length;
 
     public Player(String name) {
         this.name = name;
@@ -21,18 +20,11 @@ public class Player {
     }
 
     public int getNumber(int i) {
-        return numbers [i];
+        int[]  copyNumbers = Arrays.copyOf(numbers, 10);
+        return copyNumbers[i];
     }
 
-    public int[] getNumber2() {
-        return numbers;
-    }
-
-    public void fill(int a) {
-        Arrays.fill(numbers, 0, a, 0);
-    }
-
-    public int getLen() {
-        return len;
+    public void clear(int i) {
+        Arrays.fill(numbers, 0, i, 0);
     }
 }
