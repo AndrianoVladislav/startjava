@@ -15,21 +15,20 @@ public class GuessNumber {
 
     public void launch() {
         System.out.println("Игра начинается! У каждого есть 10 попыток.");
-        int secretNumber = (int) (Math.random() * 101);
-        int count = 0;
-        for (int i = 0; i < 10; i++) {
-            count++;
+        int secretNumber = (int) (Math.random() * 100) + 1;
+        int i;
+        for (i = 0; i < 10; i++) {
             if (isGuessed(secretNumber, i, firstPlayer) || isGuessed(secretNumber, i, secondPlayer)) {
                 break;
             }
         }
-        printNumbers(firstPlayer);
-        printNumbers(secondPlayer);
-        firstPlayer.clear(count);
-        secondPlayer.clear(count);
+        printNumbers(firstPlayer, i + 1);
+        printNumbers(secondPlayer, i + 1);
+        firstPlayer.clear(i);
+        secondPlayer.clear(i);
     }
 
-    public boolean isGuessed(int secretNumber, int i, Player player) {
+    private boolean isGuessed(int secretNumber, int i, Player player) {
         System.out.println(player.getName() + " введите число:");
         player.addNumber(i, console.nextInt());
         String name = player.getName();
@@ -37,7 +36,8 @@ public class GuessNumber {
         if (number == secretNumber) {
             System.out.println("Игрок " + name + " угадал, число " + secretNumber + " c " + (i + 1) + " попытки");
             return true;
-        } else if (number > secretNumber) {
+        }
+        if (number > secretNumber) {
             System.out.println(name + " число " + number + " больше того, что загадал компьютер");
         } else {
             System.out.println(name + " число " + number + " меньше того, что загадал компьютер");
@@ -48,12 +48,10 @@ public class GuessNumber {
         return false;
     }
 
-    public void printNumbers(Player player) {
-        for (int i = 0; i < 10; i++) {
-            int[] numbers = player.getNumbers();
-            if ((numbers[i] != 0)) {
-                System.out.print(numbers[i] + " ");
-            }
+    public void printNumbers(Player player,int i) {
+        int[] numbers = player.getNumbers(i);
+        for (int num : numbers) {
+            System.out.print(num + " ");
         }
         System.out.println();
     }

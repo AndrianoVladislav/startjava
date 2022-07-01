@@ -23,8 +23,11 @@ public class Player {
         return numbers[i];
     }
 
-    public int[] getNumbers() {
-        return Arrays.copyOf(numbers, 10);
+    public int[] getNumbers(int i) {
+        if (i == 11 || i < 10 && numbers[i - 1] == 0) {
+            i--;
+        }
+        return Arrays.copyOf(numbers, i);
     }
 
     public void clear(int i) {
