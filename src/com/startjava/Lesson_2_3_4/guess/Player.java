@@ -4,8 +4,10 @@ import java.util.Arrays;
 
 public class Player {
 
-    private String name;
-    private int[] numbers  = new int[10];
+    private final String name;
+    private final int[] numbers  = new int[10];
+    private int attempts = 0;
+    private int score = 0;
 
     public Player(String name) {
         this.name = name;
@@ -15,22 +17,49 @@ public class Player {
         return name;
     }
 
-    public void addNumber(int i, int number) {
-        this.numbers[i] = number;
-    }
-
-    public int getNumber(int i) {
-        return numbers[i];
-    }
-
-    public int[] getNumbers(int i) {
-        if (i == 11 || i < 10 && numbers[i - 1] == 0) {
-            i--;
+    public void addNumber(int number) {
+        if (number <= 0 || number > 100) {
+            System.out.println("Значение не входит в диапозон (0,100]");
+            attempts--;
+        } else {
+            this.numbers[attempts] = number;
         }
-        return Arrays.copyOf(numbers, i);
+
     }
 
-    public void clear(int i) {
-        Arrays.fill(numbers, 0, i, 0);
+    public int getNumber() {
+        return numbers[attempts];
+    }
+
+    public int[] getNumbers() {
+        if (attempts == 0) {
+            attempts++;
+        } else {
+            while (numbers[attempts - 1] == 0) {
+                attempts--;
+            }
+        }
+        return Arrays.copyOf(numbers, attempts);
+    }
+
+    public void clear() {
+        Arrays.fill(numbers, 0, attempts, 0);
+        attempts = 0;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
