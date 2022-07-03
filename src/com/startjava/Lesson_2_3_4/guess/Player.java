@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class Player {
 
     private final String name;
-    private final int[] numbers  = new int[10];
-    private int attempts = 0;
-    private int score = 0;
+    private int[] numbers  = new int[10];
+    private int attempts;
+    private int score;
 
     public Player(String name) {
         this.name = name;
@@ -19,12 +19,11 @@ public class Player {
 
     public void addNumber(int number) {
         if (number <= 0 || number > 100) {
-            System.out.println("Значение не входит в диапозон (0,100]");
+            System.out.println("Значение не входит в диапазон (0,100]");
             attempts--;
         } else {
             this.numbers[attempts] = number;
         }
-
     }
 
     public int getNumber() {
@@ -32,8 +31,9 @@ public class Player {
     }
 
     public int[] getNumbers() {
+        attempts++;
         if (attempts == 0) {
-            attempts++;
+            return numbers = new int[0];
         } else {
             while (numbers[attempts - 1] == 0) {
                 attempts--;
