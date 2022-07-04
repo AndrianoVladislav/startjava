@@ -33,7 +33,7 @@ public class Player {
         if (number <= 0 || number > 100) {
             System.out.println("Значение не входит в диапазон (0,100]");
         } else {
-            this.numbers[attempts] = number;
+            numbers[attempts] = number;
             attempts++;
         }
     }
@@ -43,11 +43,7 @@ public class Player {
     }
 
     public int[] getNumbers() {
-        if (attempts == 0) {
-            return numbers = new int[0];
-        } else {
-            return Arrays.copyOf(numbers, attempts);
-        }
+        return attempts == 0 ? numbers = new int[1] : Arrays.copyOf(numbers, attempts);
     }
 
     public void clear() {

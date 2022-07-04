@@ -30,9 +30,15 @@ public class GuessNumber {
     private void runGameplay() {
         castLots();
         int secretNumber = (int) (Math.random() * 100) + 1;
-        while (trackingTime()) {
-            if (isGuessed(secretNumber, players[0]) || isGuessed(secretNumber, players[1]) ||
-                    isGuessed(secretNumber, players[2])) {
+        while (players[players.length - 1].getAttempts() < 10) {
+            int counter = 0;
+            for (Player player : players) {
+                if (isGuessed(secretNumber, player)) {
+                    counter++;
+                    break;
+                }
+            }
+            if (counter == 1) {
                 break;
             }
         }
@@ -40,15 +46,6 @@ public class GuessNumber {
         for (Player player : players) {
             player.clear();
         }
-    }
-
-    public boolean trackingTime() {
-        for (int i = 0; i < 3; i++) {
-            if (players[i].getAttempts() < 10) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private void castLots() {
@@ -83,8 +80,8 @@ public class GuessNumber {
     }
 
     private void printNumbers() {
-        for (int i = 0; i < 3; i++) {
-            int[] numbers = players[i].getNumbers();
+        for (Player player : players) {
+            int[] numbers = player.getNumbers();
             for (int num : numbers) {
                 System.out.print(num + " ");
             }

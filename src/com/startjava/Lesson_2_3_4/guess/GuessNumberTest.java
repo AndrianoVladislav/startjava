@@ -5,12 +5,7 @@ import java.util.Scanner;
 public class GuessNumberTest {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in, "Cp866");
-        String[] players = new String[3];
-        for (int i = 0; i < players.length; i++) {
-            System.out.println("Игрок введите имя:");
-            players[i] = console.next();
-        }
-        GuessNumber game = new GuessNumber(players);
+        GuessNumber game = new GuessNumber(createPlayers(console));
         String answer = "yes";
         while (answer.equals("yes")) {
             game.launch();
@@ -19,5 +14,14 @@ public class GuessNumberTest {
                 answer = console.next();
             } while (!"no".equals(answer) && !"yes".equals(answer));
         }
+    }
+
+    public static String[] createPlayers(Scanner console) {
+        String[] playersName = new String[3];
+        for (int i = 0; i < playersName.length; i++) {
+            System.out.println("Игрок введите имя:");
+            playersName[i] = console.next();
+        }
+        return playersName;
     }
 }
