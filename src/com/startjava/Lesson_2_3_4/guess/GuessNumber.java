@@ -1,5 +1,6 @@
 package com.startjava.Lesson_2_3_4.guess;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessNumber { 
@@ -8,9 +9,9 @@ public class GuessNumber {
     private final Player[] players = new Player[3];
 
     public GuessNumber(String[] player) {
-        players[0] = new Player(player[0]);
-        players[1] = new Player(player[1]);
-        players[2] = new Player(player[2]);
+        for (int i = 0; i < players.length; i++) {
+            players[i] = new Player(player[i]);
+        }
     }
 
     public void launch() {
@@ -20,25 +21,37 @@ public class GuessNumber {
             runGameplay();
         }
         System.out.println("Очки игроков:");
+        for (Player player : players) {
+            System.out.println(player.getName() + "=" + player.getScore());
+        }
+        makeWinner();
+    }
+
+    private void runGameplay() {
+        castLots();
+        int secretNumber = (int) (Math.random() * 100) + 1;
+        while (trackingTime()) {
+            if (isGuessed(secretNumber, players[0]) || isGuessed(secretNumber, players[1]) ||
+                    isGuessed(secretNumber, players[2])) {
+                break;
+            }
+        }
+        printNumbers();
+        for (Player player : players) {
+            player.clear();
+        }
+    }
+
+    public boolean trackingTime() {
         for (int i = 0; i < 3; i++) {
-            System.out.println(players[i].getName() + "=" + players[i].getScore());
+            if (players[i].getAttempts() < 10) {
+                return true;
+            }
         }
-        makeWinner(players[0].getScore(), players[1].getScore(), players[2].getScore());
+        return false;
     }
 
-    public void makeWinner(int score0, int score1, int score2) {
-        if (score0 > score1 && score0 > score2) {
-            System.out.println(players[0].getName() + " победил!!");
-        } else if (score1 > score0 && score1 > score2) {
-            System.out.println(players[1].getName() + " победил!!");
-        } else if (score2 > score0 && score2 > score1) {
-            System.out.println(players[2].getName() + " победил!!");
-        } else {
-            System.out.println("Победителей нет!");
-        }
-    }
-
-    public void runGameplay() {
+    private void castLots() {
         System.out.println("Бросаем жребий");
         int toss = (int) (Math.random() * 3);
         for (int i = players.length - 1; i > 0; i--) {
@@ -46,17 +59,6 @@ public class GuessNumber {
             players[i] = players[toss];
             players[toss] = temp;
         }
-        int secretNumber = (int) (Math.random() * 100) + 1;
-        while (players[0].getAttempts() < 10 || players[1].getAttempts() < 10 || players[2].getAttempts() < 10) {
-            if (isGuessed(secretNumber, players[0]) || isGuessed(secretNumber, players[1]) ||
-                    isGuessed(secretNumber, players[2])) {
-                break;
-            }
-        }
-        printNumbers();
-        players[0].clear();
-        players[1].clear();
-        players[2].clear();
     }
 
     private boolean isGuessed(int secretNumber, Player player) {
@@ -67,7 +69,7 @@ public class GuessNumber {
             int number = player.getNumber();
             if (number == secretNumber) {
                 System.out.println("Игрок " + name + " угадал, число " + secretNumber + " c " +
-                        (player.getAttempts() + 1) + " попытки");
+                        player.getAttempts() + " попытки");
                 player.setScore(player.getScore() + 1);
                 return true;
             }
@@ -76,18 +78,36 @@ public class GuessNumber {
             if (player.getAttempts() == 9) {
                 System.out.println("К сожалению у " + name + " закончились попытки");
             }
-            player.setAttempts(player.getAttempts() + 1);
+        } else {
+            return true;
         }
         return false;
     }
 
-    public void printNumbers() {
+    private void printNumbers() {
         for (int i = 0; i < 3; i++) {
             int[] numbers = players[i].getNumbers();
             for (int num : numbers) {
                 System.out.print(num + " ");
             }
             System.out.println();
+        }
+    }
+
+    private void makeWinner() {
+        int[] scores = {players[0].getScore(), players[1].getScore(),players[2].getScore()};
+        Arrays.sort(scores);
+        int len = scores.length;
+        String name = null;
+        if (scores[len - 1] == scores[len - 2]) {
+            System.out.println("Победителей нет!");
+        } else {
+            for (int i = 0; i < len; i++) {
+                if (scores[len - 1] == players[i].getScore()) {
+                    name = players[i].getName();
+                }
+            }
+            System.out.println(name + " победил!!");
         }
     }
 }
