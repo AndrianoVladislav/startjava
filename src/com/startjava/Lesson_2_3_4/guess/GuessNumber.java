@@ -75,11 +75,9 @@ public class GuessNumber {
             }
             System.out.println(name + " число " + number + (number > secretNumber ? " больше " : " меньше ") +
                     "того, что загадал компьютер");
-            if (player.getAttempts() == 9) {
+            if (player.getAttempts() == 10) {
                 System.out.println("К сожалению у " + name + " закончились попытки");
             }
-        } else {
-            return true;
         }
         return false;
     }
