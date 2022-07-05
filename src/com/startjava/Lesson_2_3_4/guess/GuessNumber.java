@@ -31,14 +31,14 @@ public class GuessNumber {
         castLots();
         int secretNumber = (int) (Math.random() * 100) + 1;
         while (players[players.length - 1].getAttempts() < 10) {
-            int counter = 0;
+            boolean counter = false;
             for (Player player : players) {
                 if (isGuessed(secretNumber, player)) {
-                    counter++;
+                    counter = true;
                     break;
                 }
             }
-            if (counter == 1) {
+            if (counter) {
                 break;
             }
         }
