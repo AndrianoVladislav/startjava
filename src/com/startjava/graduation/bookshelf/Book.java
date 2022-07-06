@@ -2,8 +2,6 @@ package com.startjava.graduation.bookshelf;
 
 public class Book {
 
-
-
     private final String title;
     private final String author;
     private final int yearPublication;
@@ -29,5 +27,12 @@ public class Book {
 
     public void setShelfNumber(int shelfNumber) {
         this.shelfNumber = shelfNumber;
+    }
+
+    public String toString() {
+        return  shelfNumber + " " +
+                title + " " +
+                author + " " +
+                yearPublication + "\n";
     }
 }
