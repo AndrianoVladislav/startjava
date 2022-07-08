@@ -4,21 +4,21 @@ public class Book {
 
     private final String title;
     private final String author;
-    private final int yearPublication;
+    private final String yearPublication;
     private int shelfNumber;
 
-    public Book (String title, String author, int yearPublication) {
+    public Book (String title, String author, String yearPublication) {
         this.title = title;
         this.author = author;
         this.yearPublication = yearPublication;
     }
 
-    public String getBook() {
-        if (title == null) {
-            return shelfNumber + " " + " " + " ";
-        } else {
-            return shelfNumber + " " + title + " " + author + " " + yearPublication;
-        }
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getYearPublication() {
+        return yearPublication;
     }
 
     public String getTitle() {
