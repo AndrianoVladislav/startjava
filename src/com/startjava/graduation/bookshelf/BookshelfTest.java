@@ -1,5 +1,6 @@
 package com.startjava.graduation.bookshelf;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BookshelfTest {
@@ -11,8 +12,7 @@ public class BookshelfTest {
         System.out.println("Добро пожаловать в вашу книжную полку\n");
         int answer;
         do {
-            bookshelf.launch();
-            dis();
+            display();
             System.out.println("""
                     \nВыберите действие:
                     1 - Добавить книгу
@@ -26,9 +26,7 @@ public class BookshelfTest {
                     String title = console.next();
                     String author = console.next();
                     String yearPublication = console.next();
-                    if (bookshelf.addBook(title, author, yearPublication)) {
-                        System.out.println("На полке закончилось место!\n");
-                    }
+                    bookshelf.addBook(title, author, yearPublication);
                 }
                 case 2 -> {
                     System.out.println("Введите номер полки удаляемой книги");
@@ -49,9 +47,9 @@ public class BookshelfTest {
         } while (answer != 4);
     }
 
-    public static void dis() {
-        for (int i = 0; i < bookshelf.getCountBooks(); i++) {
-            System.out.println(bookshelf.getBooks(i));
-        }
+    public static void display() {
+        System.out.println(Arrays.toString(bookshelf.getBooks()));
+        System.out.println("Количество книг = " + bookshelf.getCountBooks() + "; Количество свободных полок = "
+                + (10 - bookshelf.getCountBooks()));
     }
 }

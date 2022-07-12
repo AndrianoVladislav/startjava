@@ -13,14 +13,6 @@ public class Book {
         this.yearPublication = yearPublication;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getYearPublication() {
-        return yearPublication;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -30,9 +22,9 @@ public class Book {
     }
 
     public String toString() {
-        return  shelfNumber + " " +
+        return shelfNumber + " " +
                 title + " " +
                 author + " " +
-                yearPublication;
+                yearPublication + "\n";
     }
 }
