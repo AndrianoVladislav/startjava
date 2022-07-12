@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Bookshelf {
 
-    private int countBooks;
     private final Book[] books = new Book[10];
+    private int countBooks;
 
     public Bookshelf() {
         books[0] = new Book("Три мушкетера", "Александр Дюма", "1844");
