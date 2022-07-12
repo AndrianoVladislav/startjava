@@ -7,7 +7,7 @@ public class Book {
     private final String yearPublication;
     private int shelfNumber;
 
-    public Book (String title, String author, String yearPublication) {
+    public Book(String title, String author, String yearPublication) {
         this.title = title;
         this.author = author;
         this.yearPublication = yearPublication;
@@ -33,6 +33,6 @@ public class Book {
         return  shelfNumber + " " +
                 title + " " +
                 author + " " +
-                yearPublication + "\n";
+                yearPublication;
     }
 }

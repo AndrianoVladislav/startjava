@@ -4,7 +4,10 @@ import java.util.Arrays;
 
 public class Bookshelf {
 
-    public Bookshelf () {
+    private int countBooks;
+    private final Book[] books = new Book[10];
+
+    public Bookshelf() {
         books[0] = new Book ("Три мушкетера", "Александр Дюма", "1844");
         books[1] = new Book ("Мастер и Маргарита", "Михаил Булгаков", "1940");
         books[2] = new Book ("Евгений Онегин", "Александр Пушкин", "1930");
@@ -14,34 +17,31 @@ public class Bookshelf {
         Arrays.fill(books,5 ,books.length, books[4]);
     }
 
-    private int countBooks;
-    private final Book[] books = new Book[10];
-
     public void launch() {
         for (int i = 0; i < countBooks; i++) {
             books[i].setShelfNumber(i + 1);
         }
-        System.out.println(Arrays.toString(books));
         System.out.println("Количество книг = " + countBooks + "; Количество свободных полок = " + (10 - countBooks));
     }
 
-    public void addBook(String title, String author, String yearPublication) {
+    public boolean addBook(String title, String author, String yearPublication) {
         if (countBooks == books.length) {
-            System.out.println("На полке закончилось место!\n");
+            return true;
         } else {
+            books[countBooks] = new Book(title, author, yearPublication);
             countBooks++;
-            books[countBooks - 1] = new Book(title, author, yearPublication);
         }
+        return false;
     }
 
     public void deleteBook(int number) {
         if (number < 1 || number > countBooks) {
             System.out.println("Книга не найдена!\n");
         } else {
-            books[number - 1] = new Book ("", "", "");
+            System.arraycopy(books, number, books, number - 1, countBooks - number);
             countBooks--;
+            books[countBooks] = new Book ("", "", "");
         }
-        System.arraycopy(books, number, books, number - 1, countBooks + 1);
     }
 
     public Book search(String title) {
@@ -51,5 +51,13 @@ public class Bookshelf {
             }
         }
         return null;
+    }
+
+    public Book getBooks(int i) {
+        return books[i];
+    }
+
+    public int getCountBooks() {
+        return countBooks;
     }
 }
